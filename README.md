@@ -64,7 +64,8 @@ dsh plugin --profile desktop add github:fenty003/three-steps-ahead
 
 插件不复制内容：启动时它读仓库根目录的 `SKILL.md`，把正文注册进技能目录（`ctx.skills.register`），所以技能正文始终只有这一份。
 
-> 这条路是后加的，**真机装进 profile 尚未验证**：本地只跑了 `node scripts/smoke.mjs`，证明 frontmatter 解析与注册逻辑成立（15 项检查全过），但没在真实宿主里装上过。装失败请开 issue。
+> **验证状态**：`github:` 安装链路已真跑过 —— pnpm 成功拉到 `three-steps-ahead@0.3.0`，包内 `lib/index.js`、`SKILL.md`、`cordis.patch.yml` 齐全，`scripts/` 按 `files` 白名单正确排除。注册逻辑由 `node scripts/smoke.mjs` 覆盖（15 项检查）。
+> **尚未验证**：装进真实 desktop profile 后客户端里能否看到技能。若装完技能没出现，先查 `~/.dsh/profiles/desktop/package.json` 的 `dsh.profile.bundles` 里有没有 `three-steps-ahead`，没有就补一行；或在 `profiles/desktop/cordis.patch.yml` 里手工加同一条 `insert`。
 
 ### 手动：DeepSeek Harness
 
