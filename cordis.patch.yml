@@ -1,0 +1,7 @@
+# dsh bundle patch：把本插件插进 profile 的层栈
+#
+# `dsh plugin --profile <name> add github:fenty003/three-steps-ahead` 会自动挂载；
+# 手工挂载可在 profiles/<name>/cordis.patch.yml 里自行加同样的 insert 条目。
+- insert:
+    - id: three-steps-ahead
+      name: 'three-steps-ahead'

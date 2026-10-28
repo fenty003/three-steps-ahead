@@ -54,7 +54,19 @@ AI 最常见的失败不是"不会做"，而是"做错了方向还很努力"：�
 
 ## 安装
 
-### DeepSeek Harness
+### 插件方式（推荐，一条命令）
+
+```bash
+dsh plugin --profile desktop add github:fenty003/three-steps-ahead
+```
+
+装完**完全退出客户端再重新启动**——desktop profile 被 Electron 独占，客户端运行中安装会被拒。
+
+插件不复制内容：启动时它读仓库根目录的 `SKILL.md`，把正文注册进技能目录（`ctx.skills.register`），所以技能正文始终只有这一份。
+
+> 这条路是后加的，**真机装进 profile 尚未验证**：本地只跑了 `node scripts/smoke.mjs`，证明 frontmatter 解析与注册逻辑成立（15 项检查全过），但没在真实宿主里装上过。装失败请开 issue。
+
+### 手动：DeepSeek Harness
 
 用户级（所有项目可用）：
 

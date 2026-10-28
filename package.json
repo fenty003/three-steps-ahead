@@ -1,0 +1,43 @@
+{
+  "name": "three-steps-ahead",
+  "version": "0.3.0",
+  "description": "意图回读（Three Steps Ahead）：动手前用四张确认卡回读用户框住的每一段。作为 DSH 插件挂载，把 SKILL.md 注册进技能目录。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "license": "MIT",
+  "author": "fenty003",
+  "homepage": "https://github.com/fenty003/three-steps-ahead",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenty003/three-steps-ahead.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fenty003/three-steps-ahead/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "skill",
+    "agent-skill",
+    "intent",
+    "readback"
+  ],
+  "files": [
+    "lib",
+    "SKILL.md",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
