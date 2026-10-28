@@ -64,9 +64,10 @@ dsh plugin --profile desktop add github:fenty003/three-steps-ahead
 
 插件不复制内容：启动时它读仓库根目录的 `SKILL.md`，把正文注册进技能目录（`ctx.skills.register`），所以技能正文始终只有这一份。
 
-> **验证状态**：`github:` 安装链路已真跑过 —— pnpm 成功拉到 `three-steps-ahead@0.3.0`，包内 `lib/index.js`、`SKILL.md`、`cordis.patch.yml` 齐全，`scripts/` 按 `files` 白名单正确排除。`dsh plugin add` 装完之后 **`package.json` 的 `dependencies` 和 `dsh.profile.bundles` 两处都会自动写好**，不需要手工补。注册逻辑由 `node scripts/smoke.mjs` 覆盖（15 项检查）。
-> **尚未验证**：装完重启客户端后，技能是否真的出现在清单里。
+> **验证状态：三道全过（2026-10-29）**。① `node scripts/smoke.mjs` 15 项通过；② `pnpm add github:…` 能拉到 `three-steps-ahead@0.3.0`，包内 `lib/index.js`、`SKILL.md`、`cordis.patch.yml` 齐全，`scripts/` 按 `files` 白名单正确排除；③ 真机装进 desktop profile 并重启后，技能清单里出现 `three-steps-ahead`。
+> `dsh plugin add` 装完 **`package.json` 的 `dependencies` 和 `dsh.profile.bundles` 两处都会自动写好**，不需要手工补。
 > **注意重复**：如果你之前已经手动把 `SKILL.md` 拷进 `~/.dsh/skills/three-steps-ahead/`，插件会和它同名。宿主按 project > runtime > user 的顺序取用、行为一致，但会在日志里留一条重名警告——确认插件能用之后，删掉手动那份即可。
+> **技术细节**：架构、注册链路、失败模式、验证方法见 [docs/architecture.md](docs/architecture.md)。
 
 ### 手动：DeepSeek Harness
 
